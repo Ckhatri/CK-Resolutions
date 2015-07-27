@@ -27,6 +27,7 @@
 </body>
 
 <template name="resolution">
+	{{#if isOwner}}
 	<li class = "{{#if checked}}checked{{/if}}">
 		<input type="checkbox" checked="{{checked}}" class="toggle-checked">
 		{{#if isOwner}}
@@ -43,4 +44,5 @@
 			<button class = "delete">Remove</button>
 		{{/if}}
 	</li>
+	{{/if}}
 </template>
