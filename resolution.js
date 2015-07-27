@@ -1,12 +1,22 @@
 Resolutions = new Mongo.Collection("resolutions");
 if (Meteor.isClient) {
 
-  Template.hello.helpers({
-
+  Template.body.helpers({
+    resolutions: function() {
+      return Resolutions.find();
+    }
   });
 
-  Template.hello.events({
-
+  Template.body.events({
+    'submit new-resolution': function(event){
+      event.preventDefault();
+      var title = event.target.title.value;
+      Resolutions.insert({
+        title: title
+        createdAt: new Date();
+      });
+      event.target.title.value = "";
+    }
   });
 }
 
