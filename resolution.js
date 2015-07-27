@@ -18,6 +18,12 @@ if (Meteor.isClient) {
       event.target.title.value = "";
     }
   });
+
+  Template.resolution.events({
+    "click .delete": function() {
+      Resolutions.remove(this._id);
+    }
+  });
 }
 
 if (Meteor.isServer) {
