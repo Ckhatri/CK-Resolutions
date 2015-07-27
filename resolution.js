@@ -8,7 +8,7 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-    'submit new-resolution': function(event){
+    'submit .new-resolution': function(event){
       event.preventDefault();
       var title = event.target.title.value;
       Resolutions.insert({
