@@ -12,8 +12,8 @@ if (Meteor.isClient) {
       event.preventDefault();
       var title = event.target.title.value;
       Resolutions.insert({
-        title: title
-        createdAt: new Date();
+        title: title,
+        createdAt: new Date()
       });
       event.target.title.value = "";
     }
