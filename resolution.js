@@ -3,7 +3,12 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     resolutions: function() {
-      return Resolutions.find();
+      if (Session.get('hideFinished')){
+        return Resolutions.find({checked: {$ne: true}});
+      }
+      else {
+        return Resolutions.find();  
+      }
     }
   });
 
@@ -16,6 +21,10 @@ if (Meteor.isClient) {
         createdAt: new Date()
       });
       event.target.title.value = "";
+    },
+
+    'change .hide-finished': function(event){
+      Session.set('hideFinished', event.target.checked);
     }
   });
 
